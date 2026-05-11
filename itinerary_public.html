@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<!-- Europe Trip Itinerary 2026 - Public Version (booking references removed) -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe Trip — May 20 to Jun 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --ink: #1A1612;
+    --ink-soft: #3D3530;
+    --ink-muted: #7A6E66;
+    --gold: #C8973A;
+    --gold-light: #E8C97A;
+    --nl-color: #D94F3D;
+    --nl-bg: #FDF0EF;
+    --nl-border: #EFC4BF;
+    --be-color: #2B5FA8;
+    --be-bg: #EEF3FB;
+    --be-border: #B8CFF0;
+    --border: #DDD5C8;
+    --ie-color: #1A6B2A;
+    --ie-bg: #EDF7EF;
+    --ie-border: #A8D8B0;
+    --white: #FFFFFF;
+    --shadow: 0 2px 12px rgba(26,22,18,0.08);
+    --shadow-lg: 0 8px 32px rgba(26,22,18,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 48px 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(200,151,58,0.04) 40px,
+      rgba(200,151,58,0.04) 41px
+    );
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+  }
+
+  .trip-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .trip-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .trip-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .trip-subtitle {
+    font-size: 14px;
+    color: rgba(245,240,232,0.6);
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  .header-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .stat-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .stat-l {
+    font-size: 11px;
+    color: rgba(245,240,232,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    background: rgba(245,240,232,0.15);
+    align-self: stretch;
+  }
+
+  /* ROUTE BAR */
+  .route-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .route-bar::-webkit-scrollbar { display: none; }
+
+  .route-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .route-city {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .route-arrow {
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  /* FLIGHT ALERT */
+  .flight-alert {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 12px 24px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .flight-alert strong { color: var(--gold-light); }
+
+  /* MAIN */
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+
+  /* CONTROLS */
+  .controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .controls-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    font-weight: 600;
+    margin-right: 4px;
+  }
+
+  .filter-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+
+  .filter-btn.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--cream);
+  }
+
+  .filter-btn.nl-active {
+    background: var(--nl-color);
+    border-color: var(--nl-color);
+    color: white;
+  }
+
+  .filter-btn.be-active {
+    background: var(--be-color);
+    border-color: var(--be-color);
+    color: white;
+  }
+  .filter-btn.ie-active {
+    background: var(--ie-color);
+    border-color: var(--ie-color);
+    color: white;
+  }
+
+  .divider-line {
+    width: 1px;
+    height: 24px;
+    background: var(--border);
+    align-self: center;
+  }
+
+  /* TAB NAV */
+  .tab-nav {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--ink-muted);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+  }
+
+  .tab-btn.active {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* DAY CARDS */
+  .day-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .day-card:hover { box-shadow: var(--shadow); }
+
+  .day-card.hidden { display: none; }
+
+  .day-card.nl-card { border-left: 3px solid var(--nl-color); }
+  .day-card.be-card { border-left: 3px solid var(--be-color); }
+  .day-card.ie-card { border-left: 3px solid var(--ie-color); }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .day-badge {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.3;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .b-ams { background: #EEF6FF; color: #1A4F8A; }
+  .b-hag { background: #F3F0FF; color: #4A3D9A; }
+  .b-rot { background: #EDFAF4; color: #0E5A3A; }
+  .b-ant { background: #FFF8EE; color: #7A4200; }
+  .b-bru { background: #FFF0F5; color: #6A1535; }
+  .b-bxl { background: #FFF5F5; color: #8A1C1C; }
+  .b-ghe { background: #F0FAF0; color: #1A5A1A; }
+
+  .day-header-text { flex: 1; min-width: 0; }
+
+  .day-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .day-date {
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .day-tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  .tag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+
+  .t-nl { background: var(--nl-bg); color: var(--nl-color); border: 1px solid var(--nl-border); }
+  .t-be { background: var(--be-bg); color: var(--be-color); border: 1px solid var(--be-border); }
+  .t-ams { background: #EEF6FF; color: #1A6ABF; border: 1px solid #B8D8F8; }
+  .t-hag { background: #F3F0FF; color: #5A4DAA; border: 1px solid #C8C0F0; }
+  .t-rot { background: #EDFAF4; color: #1A6A4A; border: 1px solid #A8DFC4; }
+  .t-ant { background: #FFF8EE; color: #8A5200; border: 1px solid #F0C880; }
+  .t-bru { background: #FFF0F5; color: #8A1545; border: 1px solid #F0B8D0; }
+  .t-bxl { background: #FFF5F5; color: #9A2C2C; border: 1px solid #F0B8B8; }
+  .t-ghe { background: #F0FAF0; color: #2A6A2A; border: 1px solid #A8D8A8; }
+  .t-tr { background: #F5F5F0; color: #5A5A50; border: 1px solid #D5D5C8; }
+  .t-ie { background: #EDF7EF; color: #1A6B2A; border: 1px solid #A8D8B0; }
+  .t-duo { background: #EEEEDD; color: #3A3A2A; border: 1px solid #CCCCAA; }
+
+  .chevron {
+    font-size: 11px;
+    color: var(--ink-muted);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .chevron.open { transform: rotate(180deg); }
+
+  .day-body { display: none; padding: 0 18px 16px; }
+  .day-body.open { display: block; }
+
+  /* ACCOMMODATION BOX */
+  .accom-box {
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    font-size: 12px;
+    line-height: 1.8;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .ab-pig { background: #EDFAF4; border: 1px solid #A8DFC4; color: #1A5A3A; }
+  .ab-bull { background: #FFF8EE; border: 1px solid #F0C880; color: #6A3A00; }
+  .ab-mar { background: #EEF6FF; border: 1px solid #B8D8F8; color: #1A3A6A; }
+  .ab-bru { background: #FFF0F5; border: 1px solid #F0B8D0; color: #6A1535; }
+  .ab-pp { background: #F3F0FF; border: 1px solid #C8C0F0; color: #3A2A8A; }
+  .ab-mox { background: #F5F5F0; border: 1px solid #D5D5C8; color: #3A3A2A; }
+  .ab-prem { background: #FFF8EE; border: 1px solid #F0C880; color: #6A3A00; }
+  .ab-golf { background: #EDF7EF; border: 1px solid #A8D8B0; color: #1A5A25; }
+
+  .ab-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .ab-text strong { font-weight: 600; font-size: 13px; display: block; margin-bottom: 2px; }
+  .ab-ref { font-size: 10px; opacity: 0.8; font-family: 'DM Mono', monospace; margin-top: 3px; display: block; }
+
+  /* TRAIN PILL */
+  .train-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #EEF6FF;
+    color: #1A4F8A;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    margin-bottom: 12px;
+    border: 1px solid #B8D8F8;
+  }
+
+  /* SECTION LABEL */
+  .section-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 12px 0 8px;
+  }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 20px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .tl-item { position: relative; margin-bottom: 10px; }
+  .tl-item:last-child { margin-bottom: 0; }
+
+  .tl-dot {
+    position: absolute;
+    left: -17px;
+    top: 5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+  }
+
+  .dot-train { background: #1A4F8A; border-color: #1A4F8A; }
+  .dot-flight { background: #5A3A9A; border-color: #5A3A9A; }
+  .dot-food { background: #8A4A00; border-color: #8A4A00; }
+  .dot-hotel { background: #1A5A3A; border-color: #1A5A3A; }
+  .dot-person { background: #5A3A9A; border-color: #5A3A9A; }
+  .dot-shuttle { background: #3A3A2A; border-color: #3A3A2A; }
+
+  .tl-time { font-size: 10px; color: var(--ink-muted); font-family: 'DM Mono', monospace; margin-bottom: 1px; }
+  .tl-title { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .tl-desc { font-size: 12px; color: var(--ink-muted); margin-top: 2px; line-height: 1.5; }
+
+  /* DIVIDER */
+  .dv { height: 1px; background: var(--border); margin: 12px 0; }
+
+  /* NOTE BOX */
+  .nb {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    border: 1px solid var(--border);
+  }
+  .nb strong { color: var(--ink); font-weight: 600; }
+
+  .warn {
+    background: #FFF5F5;
+    border: 1px solid #F0B8B8;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #6A1A1A;
+    line-height: 1.6;
+  }
+  .warn strong { font-weight: 600; }
+
+  .time-badge {
+    display: inline-block;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: var(--ink-muted);
+    padding: 2px 9px;
+    margin-bottom: 10px;
+  }
+
+  /* FLIGHT INFO BOX */
+  .flight-box {
+    background: #F3F0FF;
+    border: 1px solid #C8C0F0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 12px;
+    color: #3A2A8A;
+    line-height: 1.9;
+  }
+  .flight-box strong { font-weight: 600; }
+  .golf-box { background: #EDF7EF; border: 1px solid #A8D8B0; border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; font-size: 12px; color: #1A5A25; line-height: 1.8; }
+  .golf-box strong { font-weight: 600; }
+
+  /* ── TRAINS PANEL ── */
+  .train-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .train-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .train-badge {
+    width: 48px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.4;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+
+  .tb-ns { background: #EEF6FF; color: #1A4F8A; }
+  .tb-es { background: #FFF8EE; color: #7A4200; }
+  .tb-sn { background: #EDFAF4; color: #0E5A3A; }
+
+  .train-head-text { flex: 1; }
+  .train-route { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .train-op { font-size: 11px; color: var(--ink-muted); margin-top: 2px; }
+  .train-body { display: none; padding: 0 18px 14px; }
+  .train-body.open { display: block; }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .info-box {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+  }
+  .info-lbl { font-size: 10px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; font-weight: 600; }
+  .info-val { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .info-sub { font-size: 10px; color: var(--ink-muted); margin-top: 1px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12px; }
+  thead th {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+    background: var(--cream);
+    color: var(--ink-muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  tbody td { padding: 7px 8px; border-bottom: 1px solid var(--border); color: var(--ink); }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr.rec td { font-weight: 600; background: #EDFAF4; color: #1A5A3A; }
+
+  .bdg {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 10px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .b-rec { background: #1A5A3A; color: #fff; }
+  .b-ok { background: #B8D8F8; color: #1A4F8A; }
+
+  /* ── COSTS PANEL ── */
+  .toggle-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .tog-btn {
+    flex: 1;
+    padding: 9px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.18s;
+  }
+  .tog-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  .cost-section-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 14px 0 8px;
+  }
+  .cost-section-lbl:first-child { margin-top: 0; }
+
+  .cost-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    background: var(--white);
+    border: 1px solid var(--border);
+  }
+  .cost-row.urgent { background: #EDFAF4; border-color: #A8DFC4; }
+  .cost-leg { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .cost-sub { font-size: 11px; color: var(--ink-muted); margin-top: 2px; }
+  .cost-price { font-size: 14px; font-weight: 700; color: var(--ink); white-space: nowrap; flex-shrink: 0; font-family: 'DM Mono', monospace; }
+
+  .total-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-radius: 10px;
+    background: var(--ink);
+    color: var(--cream);
+    margin-top: 10px;
+  }
+  .total-lbl { font-size: 14px; font-weight: 600; }
+  .total-sub { font-size: 11px; opacity: 0.6; margin-top: 2px; }
+  .total-amt { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--gold-light); }
+
+  /* ── BOOKINGS PANEL ── */
+  .booking-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    border: 1px solid var(--border);
+    background: var(--white);
+  }
+  .booking-row.confirmed { background: var(--white); }
+  .booking-row.pending { background: #FFF8EE; border-color: #F0C880; }
+  .booking-row.urgent { background: #EDFAF4; border-color: #A8DFC4; }
+  .b-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .b-sub { font-size: 11px; color: var(--ink-muted); margin-top: 2px; }
+  .b-ref { font-size: 12px; font-weight: 600; font-family: 'DM Mono', monospace; color: var(--ink-muted); white-space: nowrap; flex-shrink: 0; }
+  .b-ref.conf { color: #1A5A3A; }
+  .b-ref.now { color: var(--be-color); }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 20px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-heading:first-child { margin-top: 0; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.4);
+    text-align: center;
+    padding: 24px;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* NO RESULTS */
+  .no-results {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--ink-muted);
+    display: none;
+  }
+  .no-results.visible { display: block; }
+  .no-results-icon { font-size: 40px; margin-bottom: 12px; }
+  .no-results-text { font-size: 14px; font-weight: 500; }
+
+  @media (max-width: 600px) {
+    .header-stats { gap: 20px; }
+    .stat-divider { display: none; }
+    .controls { gap: 8px; }
+    .tab-btn { font-size: 11px; padding: 7px 8px; }
+    .day-tags { display: none; }
+    .info-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="trip-eyebrow">✈ Europe Trip · May 20 – Jun 6, 2026</div>
+    <h1 class="trip-title">Ireland, Netherlands<br>&amp; <em>Belgium</em></h1>
+    <p class="trip-subtitle">Calgary → London → Shannon → Amsterdam → Belgium → Paris → Calgary · You + Michel (joining May 31)</p>
+    <div class="header-stats">
+      <div class="stat"><div class="stat-n">6</div><div class="stat-l">Golf Courses</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-n">7</div><div class="stat-l">Cities</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-n">8</div><div class="stat-l">Train legs NL/BE</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-n">2</div><div class="stat-l">Travellers</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ROUTE BAR -->
+<div class="route-bar">
+  <div class="route-inner">
+    <span class="route-city">Calgary (YYC)</span>
+    <span class="route-arrow">✈</span>
+    <span class="route-city">London (LHR)</span>
+    <span class="route-arrow">✈</span>
+    <span class="route-city">Shannon</span>
+    <span class="route-arrow">🚗</span>
+    <span class="route-city">Kerry &amp; Dublin (Golf)</span>
+    <span class="route-arrow">✈</span>
+    <span class="route-city">Amsterdam</span>
+    <span class="route-arrow">→</span>
+    <span class="route-city">The Hague</span>
+    <span class="route-arrow">→</span>
+    <span class="route-city">Rotterdam</span>
+    <span class="route-arrow">→</span>
+    <span class="route-city">Antwerp</span>
+    <span class="route-arrow">→</span>
+    <span class="route-city">Bruges</span>
+    <span class="route-arrow">→</span>
+    <span class="route-city">Ghent</span>
+    <span class="route-arrow">→</span>
+    <span class="route-city">Brussels</span>
+    <span class="route-arrow">→</span>
+    <span class="route-city">Schiphol</span>
+    <span class="route-arrow">✈</span>
+    <span class="route-city">Paris (CDG)</span>
+    <span class="route-arrow">✈</span>
+    <span class="route-city">Calgary (YYC)</span>
+  </div>
+</div>
+
+<!-- FLIGHT ALERT -->
+<div class="flight-alert">
+  <span>✈</span>
+  <span><strong>✈ WS5101</strong> Jun 6: AMS → CDG 09:35 AM · Then <strong>WS9</strong> CDG → YYC departs ~14:00 · Moxy shuttle by 06:45 AM</span>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <span class="controls-label">Filter by</span>
+    <div class="filter-group" id="country-filters">
+      <button class="filter-btn active" data-filter="all" onclick="filterCards(this,'country')">All</button>
+      <button class="filter-btn" data-filter="nl" onclick="filterCards(this,'country')">🇳🇱 Netherlands</button>
+      <button class="filter-btn" data-filter="be" onclick="filterCards(this,'country')">🇧🇪 Belgium</button>
+      <button class="filter-btn" data-filter="ie" onclick="filterCards(this,'country')">🇮🇪 Ireland</button>
+    </div>
+    <div class="divider-line"></div>
+    <div class="filter-group" id="city-filters">
+      <button class="filter-btn" data-filter="kerry" onclick="filterCards(this,'city')">Kerry</button>
+      <button class="filter-btn" data-filter="dublin-ie" onclick="filterCards(this,'city')">Dublin (IE)</button>
+      <button class="filter-btn" data-filter="amsterdam" onclick="filterCards(this,'city')">Amsterdam</button>
+      <button class="filter-btn" data-filter="hague" onclick="filterCards(this,'city')">The Hague</button>
+      <button class="filter-btn" data-filter="rotterdam" onclick="filterCards(this,'city')">Rotterdam</button>
+      <button class="filter-btn" data-filter="antwerp" onclick="filterCards(this,'city')">Antwerp</button>
+      <button class="filter-btn" data-filter="bruges" onclick="filterCards(this,'city')">Bruges</button>
+      <button class="filter-btn" data-filter="ghent" onclick="filterCards(this,'city')">Ghent</button>
+      <button class="filter-btn" data-filter="brussels" onclick="filterCards(this,'city')">Brussels</button>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('itin',this)">🗓 Itinerary</button>
+    <button class="tab-btn" onclick="showTab('trains',this)">🚆 Train Schedule</button>
+    <button class="tab-btn" onclick="showTab('costs',this)">💶 Costs</button>
+    <button class="tab-btn" onclick="showTab('bookings',this)">📋 Bookings</button>
+  </div>
+
+  <!-- ═══════ ITINERARY ═══════ -->
+  <div class="panel active" id="panel-itin">
+    <div id="no-results" class="no-results">
+      <div class="no-results-icon">🗺</div>
+      <div class="no-results-text">No days match this filter</div>
+    </div>
+
+    <!-- MAY 21 — Arrive Shannon -->
+    <div class="day-card ie-card" data-country="ie" data-cities="kerry shannon">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ire">21<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">Arrive Shannon, Ireland</div>
+          <div class="day-date">Thursday, May 21</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-ie">🇮🇪 Ireland</span>
+          <span class="tag" style="background:#EDF7EF;color:#1A6B2A;border:1px solid #A8D8B0">Shannon</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="flight-box" style="background:#EDF7EF;border-color:#A8D8B0;color:#1A5A25">
+          <strong>✈ London → Shannon</strong> &nbsp;·&nbsp; Booking reference on file<br>
+          Arriving Shannon Airport (SNN) · Collect hire car · Drive south into Kerry
+        </div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-flight"></div><div class="tl-time">Morning/Afternoon</div><div class="tl-title">Fly London → Shannon · Ref: [BOOKING REF]</div><div class="tl-desc">Land at Shannon Airport. Collect hire car — you'll need one for the Kerry golf week as the courses are spread across the peninsula.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">Afternoon</div><div class="tl-title">Drive Shannon → Ballybunion area (~1h 30m)</div><div class="tl-desc">Head southwest into County Kerry. Ballybunion is on the north Kerry coast — settle in for tomorrow's round.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Evening</div><div class="tl-title">Dinner & first Irish pint</div><div class="tl-desc">Find a local pub near Ballybunion. The town is small and welcoming — a proper Irish session to kick off the golf week.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY 22 — Ballybunion -->
+    <div class="day-card ie-card" data-country="ie" data-cities="kerry">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ire">22<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">Ballybunion Golf Club · Tee time 11:56 AM</div>
+          <div class="day-date">Friday, May 22</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-ie">🇮🇪 Ireland</span>
+          <span class="tag" style="background:#EDF7EF;color:#1A6B2A;border:1px solid #A8D8B0">Kerry</span>
+          <span class="tag" style="background:#1A6B2A;color:#fff;border:none">⛳ Golf</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="golf-box">
+          <strong>⛳ Ballybunion Golf Club — Old Course</strong><br>
+          Sandhill Rd, Ballybunion, Co. Kerry · Rating: 4.6/5 (909 reviews)<br>
+          📞 +353 68 27146 · Tee time: <strong>11:56 AM</strong> local time<br>
+          Ranked among the greatest links courses in the world · Caddies highly recommended · 18 holes · Par 71
+        </div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Morning</div><div class="tl-title">Breakfast & practice facilities</div><div class="tl-desc">Ballybunion's practice facilities are world-class. Arrive at least 45 min early — the warm-up area and putting green are exceptional.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">11:56 AM</div><div class="tl-title">Tee time — Ballybunion Old Course</div><div class="tl-desc">One of the most revered links courses on earth. Enormous dunes, dramatic clifftop holes over the Atlantic, and a legendary finishing stretch (holes 15–18). Stay in the fairways — the rough is brutal.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Post-round</div><div class="tl-title">Lunch & Guinness in the clubhouse</div><div class="tl-desc">Reviewers rave about the clubhouse food and the well-poured Guinness. Soak it in — you'll be talking about this round for years.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">Afternoon</div><div class="tl-title">Drive to Killarney (~1h 15m)</div><div class="tl-desc">Head south to Killarney for tomorrow's round. One of Ireland's most beautiful towns — great restaurants and pubs.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY 23 — Killarney -->
+    <div class="day-card ie-card" data-country="ie" data-cities="kerry">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ire">23<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">Killarney Golf & Fishing Club</div>
+          <div class="day-date">Saturday, May 23</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-ie">🇮🇪 Ireland</span>
+          <span class="tag" style="background:#EDF7EF;color:#1A6B2A;border:1px solid #A8D8B0">Kerry</span>
+          <span class="tag" style="background:#1A6B2A;color:#fff;border:none">⛳ Golf</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="golf-box">
+          <strong>⛳ Killarney Golf & Fishing Club</strong><br>
+          Lackabane, Mahony's Point, Co. Kerry · Rating: 4.7/5 (605 reviews)<br>
+          📞 +353 64 663 1034 · Open from 6:30 AM<br>
+          Host of the Irish Open · Stunning mountain and lake views · Deer roam the perimeter · 36 holes (Killeen + O'Mahony's Point)
+        </div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Morning</div><div class="tl-title">Killarney Golf & Fishing Club</div><div class="tl-desc">Set against the backdrop of the McGillycuddy's Reeks mountains and Lough Leane — described by many as what heaven must look like. Deer herds roam freely around the course.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Post-round</div><div class="tl-title">Lunch at the clubhouse</div><div class="tl-desc">Excellent food with spectacular views. The fish and chips come highly recommended by reviewers.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">Afternoon</div><div class="tl-title">Drive to Waterville (~1h)</div><div class="tl-desc">Head out on the Ring of Kerry to Waterville — one of Ireland's most scenic drives. Waterville is a tiny, charming village on the Atlantic coast.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Evening</div><div class="tl-title">Dinner in Waterville</div><div class="tl-desc">The Butler Arms Hotel does excellent seafood. Waterville is where Charlie Chaplin holidayed every year — a special, quiet place.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY 24 — Waterville -->
+    <div class="day-card ie-card" data-country="ie" data-cities="kerry">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ire">24<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">Waterville Golf Links</div>
+          <div class="day-date">Sunday, May 24</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-ie">🇮🇪 Ireland</span>
+          <span class="tag" style="background:#EDF7EF;color:#1A6B2A;border:1px solid #A8D8B0">Kerry</span>
+          <span class="tag" style="background:#1A6B2A;color:#fff;border:none">⛳ Golf</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="golf-box">
+          <strong>⛳ Waterville Golf Links</strong><br>
+          Murreagh, Waterville, Co. Kerry · Rating: 4.8/5 (568 reviews)<br>
+          📞 +353 66 947 4102 · Opens 8:30 AM<br>
+          Rated 4.8/5 — one of the highest-rated links in Ireland · Tiger Woods played here in 2000 · Payne Stewart statue on site
+        </div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Morning</div><div class="tl-title">Waterville Golf Links</div><div class="tl-desc">Perched on a narrow strip of land between the Atlantic Ocean and Ballinskelligs Bay — one of the most dramatic settings in golf. The last 3 holes have breathtaking views. Course knowledge is key — a caddie is strongly advised.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Post-round</div><div class="tl-title">Clubhouse lunch</div><div class="tl-desc">Reviewers consistently praise the food and the stunning clubhouse architecture overlooking the bay.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">Afternoon</div><div class="tl-title">Drive to Tralee (~1h 30m)</div><div class="tl-desc">Continue north around the Ring of Kerry and up to Tralee for tomorrow's round.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY 25 — Tralee -->
+    <div class="day-card ie-card" data-country="ie" data-cities="kerry">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ire">25<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">Tralee Golf Club</div>
+          <div class="day-date">Monday, May 25</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-ie">🇮🇪 Ireland</span>
+          <span class="tag" style="background:#EDF7EF;color:#1A6B2A;border:1px solid #A8D8B0">Kerry</span>
+          <span class="tag" style="background:#1A6B2A;color:#fff;border:none">⛳ Golf</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="golf-box">
+          <strong>⛳ Tralee Golf Club</strong><br>
+          Barrow, Co. Kerry · Rating: 4.8/5 (733 reviews)<br>
+          📞 +353 66 713 6379<br>
+          Designed by Arnold Palmer · Dramatic sea views on every hole · Described as "world class" by reviewers
+        </div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Morning</div><div class="tl-title">Tralee Golf Club — Arnold Palmer design</div><div class="tl-desc">Consistently rated one of Ireland's finest links, with dramatic clifftop holes and sweeping Atlantic views. Palmer said it was the most beautiful piece of land he had ever seen for a golf course. A caddie is a must here.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Post-round</div><div class="tl-title">Breakfast sandwich & lunch at the clubhouse</div><div class="tl-desc">Reviewers love the breakfast sandwich before the round and the restaurant's views. Highly rated food and service.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">Afternoon</div><div class="tl-title">Drive to Old Head / Kinsale area (~2h 30m)</div><div class="tl-desc">A longer drive south to Cork for tomorrow's spectacular Old Head round. Kinsale is one of Ireland's prettiest harbour towns — excellent for dinner.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Evening</div><div class="tl-title">Dinner in Kinsale</div><div class="tl-desc">Kinsale is the gourmet capital of Ireland — Fishy Fishy and The Bulman are outstanding. Well worth the drive.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY 26 — Old Head -->
+    <div class="day-card ie-card" data-country="ie" data-cities="kerry">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ire">26<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">Old Head Golf Links · Kinsale</div>
+          <div class="day-date">Tuesday, May 26</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-ie">🇮🇪 Ireland</span>
+          <span class="tag" style="background:#EDF7EF;color:#1A6B2A;border:1px solid #A8D8B0">Cork</span>
+          <span class="tag" style="background:#1A6B2A;color:#fff;border:none">⛳ Golf</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="golf-box">
+          <strong>⛳ Old Head Golf Links</strong><br>
+          Kinsale, Co. Cork · Rating: 4.6/5 (756 reviews)<br>
+          📞 +353 21 477 8444 · Opens 8:30 AM<br>
+          Built on a 220-acre headland jutting into the Atlantic · 7 km of cliff edge · One of the most visually dramatic courses in the world · No public access to the headland — golf only
+        </div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Morning</div><div class="tl-title">Old Head Golf Links — bucket list course</div><div class="tl-desc">Perched on a dramatic headland 300 feet above the Atlantic. 17 of 18 holes have ocean views. Reviewers call it "carved from the edge of the world." One of the most expensive — and most unforgettable — rounds in Irish golf.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Post-round</div><div class="tl-title">Lighthouse restaurant</div><div class="tl-desc">The clubhouse restaurant has breathtaking lighthouse and ocean views. Battered fish and chips is the go-to order according to reviewers.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">Afternoon</div><div class="tl-title">Drive to Shannon (~2h 30m)</div><div class="tl-desc">Head north back to the Shannon area — last night before the Dublin drive tomorrow. Check into accommodation near Shannon airport for convenience.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY 27 — Shannon to Dublin -->
+    <div class="day-card ie-card" data-country="ie" data-cities="dublin-ie">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ire">27<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">Shannon → Dublin</div>
+          <div class="day-date">Wednesday, May 27</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-ie">🇮🇪 Ireland</span>
+          <span class="tag" style="background:#EDF7EF;color:#1A6B2A;border:1px solid #A8D8B0">Dublin</span>
+          <span class="tag t-tr">Travel</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">Morning</div><div class="tl-title">Drive Shannon → Dublin (~2h 30m)</div><div class="tl-desc">Head east on the M7/M18. Drop the hire car at Dublin or keep it for The Island tomorrow — The Island Golf Club is in Donabate, north Co. Dublin, and well worth having wheels.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-hotel"></div><div class="tl-time">Midday</div><div class="tl-title">Check in Dublin</div><div class="tl-desc">Stay somewhere convenient for The Island Golf Club tomorrow — the Donabate / Swords / Dublin Airport area works well, or central Dublin if you want the city experience.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Afternoon</div><div class="tl-title">Explore Dublin</div><div class="tl-desc">Trinity College and the Book of Kells, Grafton Street, St Stephen's Green. A final taste of Ireland before the Netherlands.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Evening</div><div class="tl-title">Farewell Ireland dinner</div><div class="tl-desc">Temple Bar for the atmosphere, or Doheny & Nesbitt on Baggot Street for a more authentic Dublin pub experience. Last proper Guinness before Amsterdam!</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY 28 — The Island Golf Club -->
+    <div class="day-card ie-card" data-country="ie" data-cities="dublin-ie">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ire">28<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">The Island Golf Club · Dublin → Dublin Airport</div>
+          <div class="day-date">Thursday, May 28</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-ie">🇮🇪 Ireland</span>
+          <span class="tag" style="background:#EDF7EF;color:#1A6B2A;border:1px solid #A8D8B0">Dublin</span>
+          <span class="tag" style="background:#1A6B2A;color:#fff;border:none">⛳ Golf</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="golf-box">
+          <strong>⛳ The Island Golf Club</strong><br>
+          Corballis, Donabate, Co. Dublin · Rating: 4.8/5 (407 reviews)<br>
+          📞 +353 1 843 6205 · Opens 7:30 AM<br>
+          Old school links golf — raised dunes, blind tee shots, outstanding greens · "Europe's narrowest hole" · One of Ireland's most special and underrated courses
+        </div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Morning</div><div class="tl-title">The Island Golf Club</div><div class="tl-desc">Located on a peninsula in north Co. Dublin — accessible only by a small bridge. Pure old-school links golf with raised dunes and blind tee shots. Caddies are a must and are described as outstanding. The perfect final round of the Irish leg.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Post-round</div><div class="tl-title">Lunch at The Island</div><div class="tl-desc">Reviewers praise the restaurant, bar, and the affordable food. A relaxed post-round lunch to close out the golf week.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">Afternoon</div><div class="tl-title">Drive to Dublin Airport (~20 min from Donabate)</div><div class="tl-desc">The Island is conveniently close to Dublin Airport. Drop hire car and check in for the Dublin → Amsterdam flight.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-flight"></div><div class="tl-time">Evening</div><div class="tl-title">Fly Dublin → Amsterdam · FR3006</div><div class="tl-desc">Departs Dublin T1 at 10:40 AM — wait, this is the May 29 flight. Check your flight details: if flying on the evening of May 28, confirm with your airline. Otherwise, overnight near Dublin Airport.</div></div>
+        </div>
+        <div class="nb"><strong>Note:</strong> FR3006 departs Dublin on May 29 at 10:40 AM. You may want to stay near Dublin Airport on the night of May 28 — the Radisson Blu or Crowne Plaza Dublin Airport are both excellent and literally 2 minutes from the terminal.</div>
+      </div>
+    </div>
+
+    <!-- MAY 29 -->
+    <div class="day-card nl-card" data-country="nl" data-cities="amsterdam">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ams">29<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">Fly Dublin → Amsterdam · Arrive ~12:20 PM</div>
+          <div class="day-date">Thursday, May 29</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-nl">🇳🇱 NL</span>
+          <span class="tag t-ams">Amsterdam</span>
+        </div>
+        <span class="chevron open">▾</span>
+      </div>
+      <div class="day-body open">
+        <div class="flight-box" style="background:#FFF8EE;border-color:#F0C880;color:#6A3A00;margin-bottom:8px">
+          <strong>✈ WS2 · WestJet</strong> &nbsp;·&nbsp; Calgary (YYC) → London Heathrow (LHR) T4<br>
+          Departed May 20 at <strong>8:35 PM MST</strong> · Arrived May 21 · ~8h 40m · Boeing 787-9
+        </div>
+        <div class="flight-box" style="background:#F3F0FF;border-color:#C8C0F0;color:#3A2A8A;margin-bottom:8px">
+          <strong>✈ London → Shannon, Ireland</strong> &nbsp;·&nbsp; May 21 · Booking reference on file<br>
+          Then 8 days in Ireland (May 21–29) before flying to Amsterdam
+        </div>
+        <div class="flight-box">
+          <strong>✈ FR3006 · Ryanair</strong><br>
+          Dublin (DUB) Terminal 1 · Departs <strong>10:40 AM</strong> (GMT+1)<br>
+          Amsterdam Schiphol (AMS) · Arrives <strong>~12:20 PM</strong> (GMT+2) · ~1h 40m
+        </div>
+        <div class="accom-box ab-pig">
+          <div class="ab-icon">🐷</div>
+          <div class="ab-text">
+            <strong>Flying Pig Downtown Hostel</strong>
+            Nieuwendijk 100, Amsterdam · May 29–31 · 2 nights
+            <span class="ab-ref">Booking ref: [BOOKING REF]</span>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-flight"></div><div class="tl-time">08:30</div><div class="tl-title">Arrive Dublin T1</div><div class="tl-desc">2 hrs before departure. Check in online in advance. Gate by 10:10 AM — Ryanair closes gates early.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-flight"></div><div class="tl-time">10:40 → 12:20</div><div class="tl-title">FR3006 departs Dublin</div><div class="tl-desc">~1h 40m. 1-hour time difference — land at 12:20 PM Amsterdam time.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">~12:35</div><div class="tl-title">Train Schiphol → Amsterdam Centraal</div><div class="tl-desc">Every few minutes from under the terminal. ~15 min. Buy an OV-chipkaart for trams all week.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-hotel"></div><div class="tl-time">~13:00</div><div class="tl-title">Check in — Flying Pig Downtown</div><div class="tl-desc">5-min walk from Centraal Station. Open 24hrs, great bar, brilliant location.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~13:30</div><div class="tl-title">Canal ring & Jordaan wander</div><div class="tl-desc">Stroll the Prinsengracht and explore the Jordaan. Stop at a terrace café for a first Dutch beer.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~15:30</div><div class="tl-title">Nine Streets (De Negen Straatjes)</div><div class="tl-desc">Amsterdam's charming boutique streets — independent shops, galleries, great coffee.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Evening</div><div class="tl-title">Dinner in the Jordaan</div><div class="tl-desc">Try Indonesian rijsttafel or classic Dutch stamppot. Flying Pig bar great for a nightcap.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY 30 -->
+    <div class="day-card nl-card" data-country="nl" data-cities="amsterdam">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ams">30<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">Amsterdam — Day 1</div>
+          <div class="day-date">Friday, May 30</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-nl">🇳🇱 NL</span>
+          <span class="tag t-ams">Amsterdam</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="accom-box ab-pig"><div class="ab-icon">🐷</div><div class="ab-text"><strong>Flying Pig Downtown</strong> · Night 2 of 2 <span class="ab-ref">Ref: [BOOKING REF]</span></div></div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Morning</div><div class="tl-title">Rijksmuseum</div><div class="tl-desc">Book in advance. Rembrandt's Night Watch, Vermeer's Milkmaid — allow 2–3 hours.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Afternoon</div><div class="tl-title">Van Gogh Museum</div><div class="tl-desc">Five minutes from the Rijksmuseum — world's largest Van Gogh collection. Book ahead, sells out.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Late afternoon</div><div class="tl-title">Vondelpark & Leidseplein</div><div class="tl-desc">Relax in Amsterdam's iconic park, then wander to Leidseplein for drinks and people-watching.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Evening</div><div class="tl-title">Dinner in De Pijp</div><div class="tl-desc">Albert Cuyp Market area. Brouwerij 't IJ nearby for local craft beer.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY 31 -->
+    <div class="day-card nl-card" data-country="nl" data-cities="amsterdam">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ams">31<br>May</div>
+        <div class="day-header-text">
+          <div class="day-title">Amsterdam — Day 2 · Michel arrives 12:30 PM</div>
+          <div class="day-date">Saturday, May 31</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-nl">🇳🇱 NL</span>
+          <span class="tag t-ams">Amsterdam</span>
+          <span class="tag t-duo">+Michel</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="accom-box ab-bull"><div class="ab-icon">🐂</div><div class="ab-text"><strong>The Bulldog Hostel</strong> · Oudezijds Voorburgwal 220 · May 31 · 1 night · Both<span class="ab-ref">Ref: [BOOKING REF]</span></div></div>
+        <div class="nb" style="margin-bottom:12px"><strong>Note:</strong> Check out of Flying Pig this morning. Store bags there or walk to the Bulldog (5 min). Check in together with Michel in the evening.</div>
+        <div class="section-lbl">Morning — Solo</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-hotel"></div><div class="tl-time">~09:00</div><div class="tl-title">Check out of Flying Pig</div><div class="tl-desc">Leave bags at Flying Pig storage or walk them to the Bulldog to store before check-in time.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~09:30</div><div class="tl-title">Free morning — explore solo</div><div class="tl-desc">Anne Frank House is already booked for this evening at 19:30. Use the solo morning for the Jordaan, the Nine Streets, or revisiting something from yesterday.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~11:30</div><div class="tl-title">Jordaan wander & coffee</div><div class="tl-desc">Explore the narrow streets while waiting for Michel's arrival.</div></div>
+        </div>
+        <div class="section-lbl">Afternoon — Michel arrives</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-person"></div><div class="tl-time">~12:30</div><div class="tl-title">Michel arrives — meet & welcome lunch</div><div class="tl-desc">Meet at Café de Jaren on the Amstel — great food, big terrace on the water.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">~14:00</div><div class="tl-title">Canal boat tour</div><div class="tl-desc">1-hour boat tour of the UNESCO canal ring — perfect first experience for Michel.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~15:45</div><div class="tl-title">Van Gogh Museum 🎟 Booked</div><div class="tl-desc"><strong>Booked for 15:45.</strong> Five minutes from the Rijksmuseum — the world's largest Van Gogh collection. Allow 1.5–2 hours. Museumplein 6.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-hotel"></div><div class="tl-time">~17:30</div><div class="tl-title">Check in — The Bulldog Hostel</div><div class="tl-desc">Oudezijds Voorburgwal 220 — iconic Bulldog in the old city, lively bar downstairs.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">~18:30</div><div class="tl-title">Quick dinner near the Bulldog</div><div class="tl-desc">Keep it light — you have the Anne Frank House this evening.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">19:30</div><div class="tl-title">Anne Frank House 🎟 Booked</div><div class="tl-desc"><strong>Booked for 19:30.</strong> A deeply moving experience on Prinsengracht 263. Evening slots are beautiful — quieter and atmospheric. Allow ~1.5 hours.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JUN 1 -->
+    <div class="day-card nl-card" data-country="nl" data-cities="hague rotterdam">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-hag">1<br>Jun</div>
+        <div class="day-header-text">
+          <div class="day-title">The Hague (day) → Rotterdam (night)</div>
+          <div class="day-date">Sunday, Jun 1</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-nl">🇳🇱 NL</span>
+          <span class="tag t-hag">The Hague</span>
+          <span class="tag t-rot">Rotterdam</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="accom-box ab-mar"><div class="ab-icon">🏨</div><div class="ab-text"><strong>Rotterdam Marriott Hotel</strong> · Weena 686, Rotterdam · Jun 1 · 1 night · Both<span class="ab-ref">Confirmation: [CONF NUMBER] · Request high-floor room away from tram side</span></div></div>
+        <div class="section-lbl">Morning — Depart Amsterdam</div>
+        <div class="train-pill">🚆 NS · Amsterdam → Den Haag · ~50 min · every 15 min · no booking needed</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-hotel"></div><div class="tl-time">~08:30</div><div class="tl-title">Check out Bulldog & train to The Hague</div><div class="tl-desc">Catch the 08:37 for a ~09:30 Mauritshuis arrival. Store bags at Den Haag Centraal left luggage.</div></div>
+        </div>
+        <div class="dv"></div>
+        <div class="section-lbl">The Hague · ~09:30–15:30</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~09:30</div><div class="tl-title">Mauritshuis Museum</div><div class="tl-desc">Vermeer's Girl with a Pearl Earring, Rembrandt's Anatomy Lesson. Book in advance. Allow 1.5–2 hrs.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~11:30</div><div class="tl-title">Binnenhof & Hofvijver pond</div><div class="tl-desc">Historic seat of Dutch parliament — castle-like complex reflected in the pond. Free to walk around.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">~12:30</div><div class="tl-title">Lunch near the Passage arcade</div><div class="tl-desc">Beautiful 19th-century covered arcade. Try a haringbroodje — Dutch herring sandwich.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~13:30</div><div class="tl-title">Escher in Het Paleis</div><div class="tl-desc">M.C. Escher's mind-bending art in a royal palace. Allow 1 hour.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">~15:40</div><div class="tl-title">Train to Rotterdam · Direct · ~25 min</div><div class="tl-desc">Collect bags from Den Haag Centraal. Arrive Rotterdam ~16:05.</div></div>
+        </div>
+        <div class="dv"></div>
+        <div class="section-lbl">Evening — Rotterdam</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-hotel"></div><div class="tl-time">~16:15</div><div class="tl-title">Check in — Rotterdam Marriott</div><div class="tl-desc">Weena 686, directly opposite Rotterdam Centraal. Ask for a high floor for great city views.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~17:00</div><div class="tl-title">Markthal & Cube Houses</div><div class="tl-desc">Spectacular arched food market and iconic yellow Cube Houses — ~15 min walk from Marriott.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~18:00</div><div class="tl-title">Erasmus Bridge & waterfront</div><div class="tl-desc">Walk the Maas riverfront to the Erasmus Bridge — stunning at dusk.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Evening</div><div class="tl-title">Dinner — Witte de Withstraat</div><div class="tl-desc">Rotterdam's liveliest restaurant street, ~20 min walk from the Marriott.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JUN 2 -->
+    <div class="day-card be-card" data-country="be" data-cities="rotterdam antwerp">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ant">2<br>Jun</div>
+        <div class="day-header-text">
+          <div class="day-title">Rotterdam (morning) → Antwerp</div>
+          <div class="day-date">Monday, Jun 2</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-nl">🇳🇱 NL</span>
+          <span class="tag t-tr">Travel</span>
+          <span class="tag t-be">🇧🇪 BE</span>
+          <span class="tag t-ant">Antwerp</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="accom-box ab-prem"><div class="ab-icon">🏢</div><div class="ab-text"><strong>Premier Suites Antwerp</strong> · Appelmansstraat 31, Antwerp · Jun 2 · 1 night · Both<span class="ab-ref">Booking code on file · Check-in from 3:00 PM · security deposit required at check-in · Reception Mon–Thu 7am–11pm</span></div></div>
+        <div class="section-lbl">Morning — Rotterdam</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~09:00</div><div class="tl-title">Depot Boijmans or SS Rotterdam</div><div class="tl-desc">Depot Boijmans — world's first publicly accessible art storage building with a rooftop forest. SS Rotterdam — beautifully restored ocean liner. Pick one.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">~11:00</div><div class="tl-title">Coffee & check out of Marriott</div><div class="tl-desc">Collect bags — Marriott is literally across the street from Rotterdam Centraal.</div></div>
+        </div>
+        <div class="dv"></div>
+        <div class="train-pill">🚆 Eurostar · Rotterdam → Antwerp · Direct · ~45 min · from €15pp · Book now at ns-international.com</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">~11:43 or 12:10</div><div class="tl-title">Direct train to Antwerp</div><div class="tl-desc">Eurostar or Eurocity Direct. No changes — direct all the way. Arrive at magnificent Antwerp Centraal.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-hotel"></div><div class="tl-time">~13:00</div><div class="tl-title">Drop bags at Premier Suites · explore Diamond District</div><div class="tl-desc">Check-in not until 3 PM — store bags and head out. Hoveniersstraat diamond area is right next to Centraal station. Premier Suites is on Appelmansstraat 31, steps from the station.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Afternoon</div><div class="tl-title">Grote Markt & Cathedral of Our Lady</div><div class="tl-desc">Antwerp's stunning main square and the cathedral housing two Rubens masterpieces inside.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-hotel"></div><div class="tl-time">~15:00</div><div class="tl-title">Check in — Premier Suites Antwerp</div><div class="tl-desc">Appelmansstraat 31. Don't forget photo ID and credit card for the security deposit pre-auth.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Late afternoon</div><div class="tl-title">Rubenshuis</div><div class="tl-desc">Former home and studio of Peter Paul Rubens — a Baroque townhouse packed with his paintings. Closed Wednesdays.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Evening</div><div class="tl-title">Dinner in Het Zuid</div><div class="tl-desc">Antwerp's art quarter — moules-frites with a Bolleke de Koninck. First proper taste of Belgium!</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JUN 3 -->
+    <div class="day-card be-card" data-country="be" data-cities="antwerp bruges">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-bru">3<br>Jun</div>
+        <div class="day-header-text">
+          <div class="day-title">Antwerp → Bruges</div>
+          <div class="day-date">Tuesday, Jun 3</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-be">🇧🇪 BE</span>
+          <span class="tag t-tr">Travel</span>
+          <span class="tag t-bru">Bruges</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="accom-box ab-bru"><div class="ab-icon">🏰</div><div class="ab-text"><strong>Martin's Brugge</strong> · Oude Burg 5, Bruges · Jun 3 · 1 night · Both<span class="ab-ref">Rated 4.2/5 · Steps from the Markt square · Add booking ref when available</span></div></div>
+        <div class="train-pill">🚆 SNCB · Antwerp → Bruges · Direct · ~1h 18m · ~€15pp · Buy at station</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">~09:06</div><div class="tl-title">Direct train to Bruges</div><div class="tl-desc">SNCB Intercity. No changes needed. Arrive Bruges ~10:24 — 20-min walk or bus to city centre.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-hotel"></div><div class="tl-time">Midday</div><div class="tl-title">Check in — Martin's Brugge</div><div class="tl-desc">Oude Burg 5, steps from the Markt and Belfry. Perfect central base.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Afternoon</div><div class="tl-title">Markt & Belfry tower</div><div class="tl-desc">Climb 366 steps for panoramic rooftop views — right outside Martin's door.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Afternoon</div><div class="tl-title">Canal boat tour & Burg Square</div><div class="tl-desc">30-min boat tour then the Basilica of the Holy Blood at Burg Square.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Late afternoon</div><div class="tl-title">Groeningemuseum</div><div class="tl-desc">Finest Flemish Primitive art collection — Jan van Eyck, Hans Memling and others.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Evening</div><div class="tl-title">Bruges at night — dinner & De Halve Maan</div><div class="tl-desc">Once day-trippers leave, Bruges is magical. Dinner in the Vismarkt, then De Halve Maan brewery (since 1564). Book ahead in summer.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JUN 4 -->
+    <div class="day-card be-card" data-country="be" data-cities="bruges ghent">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-ghe">4<br>Jun</div>
+        <div class="day-header-text">
+          <div class="day-title">Bruges → Ghent</div>
+          <div class="day-date">Wednesday, Jun 4</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-be">🇧🇪 BE</span>
+          <span class="tag t-tr">Travel</span>
+          <span class="tag t-ghe">Ghent</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="accom-box ab-pp"><div class="ab-icon">👑</div><div class="ab-text"><strong>B&amp;B Petit Prince</strong> · Rabotstraat 41, Ghent · Jun 4 · 1 night · Both · Booked by Michel<span class="ab-ref">Rated 4.7/5 · Contact host Polo in advance to arrange check-in time</span></div></div>
+        <div class="train-pill">🚆 SNCB · Bruges → Ghent · Direct · ~30 min · ~€9pp · Buy at station</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">~08:32</div><div class="tl-title">Direct train to Ghent</div><div class="tl-desc">SNCB, no changes. Arrive Ghent Sint-Pieters ~09:02. Tram 1 or 2 to historic centre (~10 min).</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Late morning</div><div class="tl-title">St Bavo's Cathedral — The Ghent Altarpiece</div><div class="tl-desc">The Adoration of the Mystic Lamb by the Van Eyck brothers. Pre-book your timed slot.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Midday</div><div class="tl-title">Graslei & Korenlei waterfront</div><div class="tl-desc">Ghent's most iconic canal-side streetscape. Grab lunch at a waterfront terrace.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Afternoon</div><div class="tl-title">Gravensteen (Castle of the Counts)</div><div class="tl-desc">Well-preserved medieval castle right in the city centre with great views from the ramparts.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Late afternoon</div><div class="tl-title">Patershol & Vrijdagmarkt</div><div class="tl-desc">Ghent's medieval quarter — independent shops, chocolatiers, great local atmosphere.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">Evening</div><div class="tl-title">Farewell Belgium dinner</div><div class="tl-desc">Try waterzooi — Ghent's signature stew. The Patershol neighbourhood has the best spots.</div></div>
+        </div>
+        <div class="nb"><strong>Breakfast tip:</strong> The Petit Prince breakfast is genuinely special — don't rush it on Jun 5 morning before Brussels. Host Polo is renowned for going above and beyond.</div>
+      </div>
+    </div>
+
+    <!-- JUN 5 -->
+    <div class="day-card be-card" data-country="be nl" data-cities="ghent brussels amsterdam">
+      <div class="day-header" onclick="toggleCard(this)">
+        <div class="day-badge b-bxl">5<br>Jun</div>
+        <div class="day-header-text">
+          <div class="day-title">Ghent → Brussels (stopover) → Moxy Schiphol</div>
+          <div class="day-date">Thursday, Jun 5</div>
+        </div>
+        <div class="day-tags">
+          <span class="tag t-be">🇧🇪 BE</span>
+          <span class="tag t-nl">🇳🇱 NL</span>
+          <span class="tag t-bxl">Brussels</span>
+          <span class="tag t-ams">Schiphol</span>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="day-body">
+        <div class="accom-box ab-mox"><div class="ab-icon">✈</div><div class="ab-text"><strong>Moxy Amsterdam Schiphol Airport</strong> · Hoeksteen 74-84, Hoofddorp<span class="ab-ref">Booking ref: [BOOKING REF] · ⚠ Not walkable to Schiphol — hotel shuttle €5, ~15 min from Arrivals</span></div></div>
+        <div class="flight-box" style="background:#FFF8EE;border-color:#F0C880;color:#6A3A00;margin-bottom:8px">
+          <strong>✈ WS5101 · WestJet</strong> &nbsp;·&nbsp; Amsterdam (AMS) → Paris CDG<br>
+          Departs <strong>09:35 AM</strong> (GMT+2) · Arrives Paris CDG <strong>~10:55 AM</strong> · ~1h 20m · Codeshare flight
+        </div>
+        <div class="flight-box" style="background:#FFF8EE;border-color:#F0C880;color:#6A3A00;margin-bottom:12px">
+          <strong>✈ WS9 · WestJet</strong> &nbsp;·&nbsp; Paris CDG (T2A/2C) → Calgary (YYC)<br>
+          Departs <strong>~14:00 CEST</strong> · Arrives Calgary <strong>~15:10 MDT</strong> · ~9h 10m · Boeing 787-9<br>
+          <span style="font-size:11px;opacity:0.8">Allow 2+ hrs between WS5101 arrival (10:55) and WS9 departure (14:00) — same airport but allow time for transfer and check-in</span>
+        </div>
+        <div class="train-pill">🚆 Ghent → Brussels-Midi ~30 min · then Eurostar Brussels → Amsterdam ~1h 50m</div>
+        <div class="section-lbl">Morning — Ghent</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">~09:00</div><div class="tl-title">Breakfast at B&amp;B Petit Prince</div><div class="tl-desc">Don't rush — host Polo's breakfast is one of the highlights of the stay.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-hotel"></div><div class="tl-time">~10:00</div><div class="tl-title">Check out & head to Ghent Sint-Pieters</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">~10:33</div><div class="tl-title">Train Ghent → Brussels-Midi · Direct · ~30 min</div><div class="tl-desc">SNCB Intercity. Arrive ~11:05. Store bags in left luggage lockers (€4–5, near platforms 1 & 2).</div></div>
+        </div>
+        <div class="dv"></div>
+        <div class="section-lbl">Brussels stopover · 11:30–14:45</div>
+        <div class="time-badge">~11:30 AM → 3:00 PM</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~11:30</div><div class="tl-title">Grand Place</div><div class="tl-desc">15-min walk from Brussels-Midi. One of the most beautiful squares in Europe.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">~12:00</div><div class="tl-title">Belgian waffle & chocolate shops</div><div class="tl-desc">Street waffle near Grand Place, then Neuhaus or Pierre Marcolini in the Galerie de la Reine arcade.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~12:45</div><div class="tl-title">Manneken Pis</div><div class="tl-desc">5-min walk from Grand Place — Belgium's most famous (and tiny) bronze statue.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">~13:15</div><div class="tl-title">Galeries Royales Saint-Hubert</div><div class="tl-desc">Europe's oldest covered shopping arcade (1847) — glass vaulted ceiling and more chocolatiers.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-food"></div><div class="tl-time">~13:45</div><div class="tl-title">Lunch & final Belgian beer</div><div class="tl-desc">Moules-frites at Chez Léon or Brasserie de la Senne. Last Trappist beer of the trip!</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">~14:45</div><div class="tl-title">Return to Brussels-Midi · collect bags</div><div class="tl-desc">Allow 20 min to reach the platform.</div></div>
+        </div>
+        <div class="dv"></div>
+        <div class="section-lbl">Afternoon → Schiphol</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">~15:52</div><div class="tl-title">Eurostar Brussels-Midi → Amsterdam · Direct · ~1h 50m</div><div class="tl-desc">Book well in advance at eurostar.com — sells out. Arrive Amsterdam Centraal ~17:42.</div></div>
+          <div class="tl-item"><div class="tl-dot dot-train"></div><div class="tl-time">~17:50</div><div class="tl-title">Train Amsterdam Centraal → Schiphol · ~15 min</div></div>
+          <div class="tl-item"><div class="tl-dot dot-shuttle"></div><div class="tl-time">~18:15</div><div class="tl-title">Moxy hotel shuttle → Check in</div><div class="tl-desc">Shuttle from Schiphol Arrivals (~15 min, €5). Check in, relax, easy dinner at the Moxy bar.</div></div>
+        </div>
+        <div class="warn"><strong>⚠ Jun 6 morning — two flights:</strong><br>WS5101 AMS→CDG departs 09:35 AM · Be at Schiphol by <strong>07:15 AM</strong> · Moxy shuttle by <strong>06:45 AM</strong> · Alarm at 06:00 AM<br>WS9 CDG→YYC departs ~14:00 · Arrive CDG by 12:00 for check-in · You have ~3 hrs in Paris CDG between flights<br>Confirm Moxy shuttle schedule at check-in the night before.</div>
+      </div>
+    </div>
+
+    <div class="nb" style="margin-top:4px">
+      <strong>Accommodation summary —</strong>
+      🐷 Flying Pig Downtown · May 29–31 · <span style="font-family:'DM Mono',monospace">[BOOKING REF]</span> &nbsp;|&nbsp;
+      🐂 Bulldog Hostel · May 31 · <span style="font-family:'DM Mono',monospace">[BOOKING REF]</span> &nbsp;|&nbsp;
+      🏨 Marriott Rotterdam · Jun 1 · <span style="font-family:'DM Mono',monospace">[CONF NUMBER]</span> &nbsp;|&nbsp;
+      🏢 Premier Suites Antwerp · Jun 2 · <span style="font-family:'DM Mono',monospace">[BOOKING CODE]</span> &nbsp;|&nbsp;
+      🏰 Martin's Brugge · Jun 3 &nbsp;|&nbsp;
+      👑 Petit Prince Ghent · Jun 4 · Michel &nbsp;|&nbsp;
+      ✈ Moxy Schiphol · Jun 5 · <span style="font-family:'DM Mono',monospace">[BOOKING REF]</span>
+    </div>
+  </div>
+
+  <!-- ═══════ TRAINS ═══════ -->
+  <div class="panel" id="panel-trains">
+    <div class="warn"><strong>⚠ Engineering works Jun 6–7:</strong> May affect Brussels → Amsterdam Eurostar. Your stopover is Jun 5 so you're not affected, but confirm at b-europe.com/EN/Disruptions a few days before departure.</div>
+
+    <!-- Train cards -->
+    <div class="train-card">
+      <div class="train-head" onclick="toggleTrain(this)">
+        <div class="train-badge tb-ns">Jun 1<br>AM</div>
+        <div class="train-head-text"><div class="train-route">Amsterdam Centraal → Den Haag Centraal</div><div class="train-op">NS Intercity · No booking needed · Buy at station</div></div>
+        <span class="chevron open">▾</span>
+      </div>
+      <div class="train-body open">
+        <div class="info-grid">
+          <div class="info-box"><div class="info-lbl">Duration</div><div class="info-val">~49–54 min</div></div>
+          <div class="info-box"><div class="info-lbl">Frequency</div><div class="info-val">Every 15–30 min</div></div>
+          <div class="info-box"><div class="info-lbl">Price per person</div><div class="info-val">~€9–14</div></div>
+          <div class="info-box"><div class="info-lbl">Operator</div><div class="info-val">NS Dutch Rail</div></div>
+        </div>
+        <table><thead><tr><th>Depart AMS</th><th>Arrive Den Haag</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>08:07</td><td>~09:00</td><td>Early option</td></tr>
+          <tr class="rec"><td>08:37</td><td>~09:30</td><td><span class="bdg b-rec">✓ Recommended</span> Mauritshuis opening</td></tr>
+          <tr><td>09:07</td><td>~10:00</td><td><span class="bdg b-ok">Also fine</span></td></tr>
+        </tbody></table>
+        <div class="nb">No booking needed — OV-chipkaart works. Buy at station or NS app.</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-head" onclick="toggleTrain(this)">
+        <div class="train-badge tb-ns">Jun 1<br>PM</div>
+        <div class="train-head-text"><div class="train-route">Den Haag Centraal → Rotterdam Centraal</div><div class="train-op">NS · Direct · No booking needed</div></div>
+        <span class="chevron open">▾</span>
+      </div>
+      <div class="train-body open">
+        <div class="info-grid">
+          <div class="info-box"><div class="info-lbl">Duration</div><div class="info-val">~25 min</div></div>
+          <div class="info-box"><div class="info-lbl">Frequency</div><div class="info-val">Every 10 min</div></div>
+          <div class="info-box"><div class="info-lbl">Price per person</div><div class="info-val">~€5–8</div></div>
+          <div class="info-box"><div class="info-lbl">Operator</div><div class="info-val">NS Dutch Rail</div></div>
+        </div>
+        <table><thead><tr><th>Depart Den Haag</th><th>Arrive Rotterdam</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>15:25</td><td>~15:50</td><td></td></tr>
+          <tr class="rec"><td>15:40</td><td>~16:05</td><td><span class="bdg b-rec">✓ Recommended</span> Check in Marriott by 16:15</td></tr>
+          <tr><td>15:55</td><td>~16:20</td><td><span class="bdg b-ok">Also fine</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-head" onclick="toggleTrain(this)">
+        <div class="train-badge tb-es">Jun 2<br>AM</div>
+        <div class="train-head-text"><div class="train-route">Rotterdam Centraal → Antwerp Centraal</div><div class="train-op">Eurostar / Eurocity Direct · Direct · Book now at ns-international.com</div></div>
+        <span class="chevron open">▾</span>
+      </div>
+      <div class="train-body open">
+        <div class="info-grid">
+          <div class="info-box"><div class="info-lbl">Duration</div><div class="info-val">~32–60 min</div><div class="info-sub">Direct, no changes</div></div>
+          <div class="info-box"><div class="info-lbl">Frequency</div><div class="info-val">~16x daily</div></div>
+          <div class="info-box"><div class="info-lbl">Price per person</div><div class="info-val">From €15</div></div>
+          <div class="info-box"><div class="info-lbl">Book at</div><div class="info-val">ns-international.com</div></div>
+        </div>
+        <table><thead><tr><th>Depart Rotterdam</th><th>Arrive Antwerp</th><th>Train</th></tr></thead>
+        <tbody>
+          <tr><td>10:10</td><td>~11:00</td><td>Eurostar</td></tr>
+          <tr><td>11:10</td><td>~12:00</td><td>Eurostar</td></tr>
+          <tr class="rec"><td>11:43</td><td>~12:30</td><td>Eurocity Direct <span class="bdg b-rec">✓ Recommended</span></td></tr>
+          <tr><td>12:10</td><td>~13:00</td><td>Eurostar <span class="bdg b-ok">Also fine</span></td></tr>
+        </tbody></table>
+        <div class="warn"><strong>⚠ Book now</strong> at ns-international.com or eurostar.com</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-head" onclick="toggleTrain(this)">
+        <div class="train-badge tb-sn">Jun 3<br>AM</div>
+        <div class="train-head-text"><div class="train-route">Antwerp Centraal → Bruges</div><div class="train-op">SNCB · Direct · Buy at station</div></div>
+        <span class="chevron open">▾</span>
+      </div>
+      <div class="train-body open">
+        <div class="info-grid">
+          <div class="info-box"><div class="info-lbl">Duration</div><div class="info-val">~1h 18m</div><div class="info-sub">Direct, no changes</div></div>
+          <div class="info-box"><div class="info-lbl">Frequency</div><div class="info-val">Every ~30 min</div></div>
+          <div class="info-box"><div class="info-lbl">Price per person</div><div class="info-val">~€15 fixed</div></div>
+          <div class="info-box"><div class="info-lbl">Operator</div><div class="info-val">SNCB Belgian Rail</div></div>
+        </div>
+        <table><thead><tr><th>Depart Antwerp</th><th>Arrive Bruges</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>08:06</td><td>~09:24</td><td></td></tr>
+          <tr class="rec"><td>09:06</td><td>~10:24</td><td><span class="bdg b-rec">✓ Recommended</span></td></tr>
+          <tr><td>09:36</td><td>~10:54</td><td><span class="bdg b-ok">Also fine</span></td></tr>
+        </tbody></table>
+        <div class="nb">Belgian SNCB domestic trains have fixed prices — no benefit to booking in advance.</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-head" onclick="toggleTrain(this)">
+        <div class="train-badge tb-sn">Jun 4<br>AM</div>
+        <div class="train-head-text"><div class="train-route">Bruges → Ghent Sint-Pieters</div><div class="train-op">SNCB · Direct · Buy at station</div></div>
+        <span class="chevron open">▾</span>
+      </div>
+      <div class="train-body open">
+        <div class="info-grid">
+          <div class="info-box"><div class="info-lbl">Duration</div><div class="info-val">~30 min</div><div class="info-sub">Direct, no changes</div></div>
+          <div class="info-box"><div class="info-lbl">Frequency</div><div class="info-val">Every 30 min</div></div>
+          <div class="info-box"><div class="info-lbl">Price per person</div><div class="info-val">~€9 fixed</div></div>
+          <div class="info-box"><div class="info-lbl">Operator</div><div class="info-val">SNCB Belgian Rail</div></div>
+        </div>
+        <table><thead><tr><th>Depart Bruges</th><th>Arrive Ghent</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>08:02</td><td>~08:32</td><td>Earliest</td></tr>
+          <tr class="rec"><td>08:32</td><td>~09:02</td><td><span class="bdg b-rec">✓ Recommended</span> Arrive for Altarpiece slot</td></tr>
+          <tr><td>09:02</td><td>~09:32</td><td><span class="bdg b-ok">Also fine</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-head" onclick="toggleTrain(this)">
+        <div class="train-badge tb-sn">Jun 5<br>AM</div>
+        <div class="train-head-text"><div class="train-route">Ghent Sint-Pieters → Brussels-Midi</div><div class="train-op">SNCB · Direct · Buy at station</div></div>
+        <span class="chevron open">▾</span>
+      </div>
+      <div class="train-body open">
+        <div class="info-grid">
+          <div class="info-box"><div class="info-lbl">Duration</div><div class="info-val">~28–36 min</div><div class="info-sub">Direct, no changes</div></div>
+          <div class="info-box"><div class="info-lbl">Frequency</div><div class="info-val">Every 30 min</div></div>
+          <div class="info-box"><div class="info-lbl">Price per person</div><div class="info-val">~€14 fixed</div></div>
+          <div class="info-box"><div class="info-lbl">Operator</div><div class="info-val">SNCB Belgian Rail</div></div>
+        </div>
+        <table><thead><tr><th>Depart Ghent</th><th>Arrive Brussels-Midi</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>10:03</td><td>~10:35</td><td></td></tr>
+          <tr class="rec"><td>10:33</td><td>~11:05</td><td><span class="bdg b-rec">✓ Recommended</span> After Petit Prince breakfast</td></tr>
+          <tr><td>11:03</td><td>~11:35</td><td><span class="bdg b-ok">Also fine</span></td></tr>
+        </tbody></table>
+        <div class="nb">Store bags in left luggage lockers at Brussels-Midi on arrival (€4–5, near platforms 1 & 2).</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-head" onclick="toggleTrain(this)">
+        <div class="train-badge tb-es">Jun 5<br>PM</div>
+        <div class="train-head-text"><div class="train-route">Brussels-Midi → Amsterdam Centraal</div><div class="train-op">Eurostar · Direct · Book now at eurostar.com</div></div>
+        <span class="chevron open">▾</span>
+      </div>
+      <div class="train-body open">
+        <div class="info-grid">
+          <div class="info-box"><div class="info-lbl">Duration</div><div class="info-val">~1h 50m</div><div class="info-sub">Direct, no changes</div></div>
+          <div class="info-box"><div class="info-lbl">Frequency</div><div class="info-val">~8x daily</div></div>
+          <div class="info-box"><div class="info-lbl">Price per person</div><div class="info-val">From €29</div></div>
+          <div class="info-box"><div class="info-lbl">Book at</div><div class="info-val">eurostar.com</div></div>
+        </div>
+        <table><thead><tr><th>Depart Brussels-Midi</th><th>Arrive Amsterdam</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>14:52</td><td>~16:42</td><td>Tight on Brussels time</td></tr>
+          <tr class="rec"><td>15:52</td><td>~17:42</td><td><span class="bdg b-rec">✓ Recommended</span> Full Brussels afternoon</td></tr>
+          <tr><td>16:52</td><td>~18:42</td><td><span class="bdg b-ok">Also fine</span></td></tr>
+          <tr><td>17:52</td><td>~19:42</td><td>Latest recommended</td></tr>
+        </tbody></table>
+        <div class="warn"><strong>⚠ Book this now</strong> at eurostar.com — afternoon departures sell out fast.</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="train-head" onclick="toggleTrain(this)">
+        <div class="train-badge tb-ns">Jun 5<br>Eve</div>
+        <div class="train-head-text"><div class="train-route">Amsterdam Centraal → Schiphol + Moxy Shuttle</div><div class="train-op">NS Sprinter + hotel shuttle · No booking needed</div></div>
+        <span class="chevron open">▾</span>
+      </div>
+      <div class="train-body open">
+        <div class="info-grid">
+          <div class="info-box"><div class="info-lbl">Train</div><div class="info-val">~15 min</div><div class="info-sub">Every 7–15 min</div></div>
+          <div class="info-box"><div class="info-lbl">Shuttle</div><div class="info-val">€5 · ~15 min</div><div class="info-sub">From Arrivals</div></div>
+          <div class="info-box"><div class="info-lbl">Train price</div><div class="info-val">~€5</div></div>
+          <div class="info-box"><div class="info-lbl">Door to door</div><div class="info-val">~30 min total</div></div>
+        </div>
+        <table><thead><tr><th>Eurostar arrives AMS</th><th>At Schiphol</th><th>At Moxy</th></tr></thead>
+        <tbody>
+          <tr class="rec"><td>17:42 (15:52 train)</td><td>~17:50</td><td>~18:30 <span class="bdg b-rec">✓ Best</span></td></tr>
+          <tr><td>18:42 (16:52 train)</td><td>~18:50</td><td>~19:30</td></tr>
+        </tbody></table>
+        <div class="nb"><strong>Jun 6 morning:</strong> Catch Moxy shuttle by <strong>06:45 AM</strong>. Confirm schedule with hotel at check-in.</div>
+      </div>
+    </div>
+
+    <div class="nb" style="margin-top:4px">
+      <strong>Where to book —</strong>
+      🇳🇱 NS legs: <strong>ns.nl</strong> or buy at station / OV-chipkaart &nbsp;·&nbsp;
+      🚄 Eurostar legs: <strong>eurostar.com</strong> or <strong>ns-international.com</strong> — book now &nbsp;·&nbsp;
+      🇧🇪 SNCB legs: <strong>belgiantrain.be</strong> or buy at station — no advance booking needed
+    </div>
+  </div>
+
+  <!-- ═══════ COSTS ═══════ -->
+  <div class="panel" id="panel-costs">
+    <div class="toggle-row">
+      <button class="tog-btn active" id="btn-both" onclick="setCost('both')">Both of you</button>
+      <button class="tog-btn" id="btn-pp" onclick="setCost('pp')">Per person</button>
+    </div>
+
+    <div class="cost-section-lbl">🇳🇱 Netherlands — Buy at station, no advance booking needed</div>
+    <div class="cost-row"><div><div class="cost-leg">Amsterdam → The Hague</div><div class="cost-sub">Jun 1 · NS Intercity · ~50 min</div></div><div class="cost-price" data-pp="€9–14" data-both="€18–28">€18–28</div></div>
+    <div class="cost-row"><div><div class="cost-leg">The Hague → Rotterdam</div><div class="cost-sub">Jun 1 · NS · ~25 min</div></div><div class="cost-price" data-pp="€5–8" data-both="€10–16">€10–16</div></div>
+    <div class="cost-row"><div><div class="cost-leg">Amsterdam → Schiphol</div><div class="cost-sub">Jun 5 · NS Sprinter · ~15 min</div></div><div class="cost-price" data-pp="€5" data-both="€10">€10</div></div>
+
+    <div class="cost-section-lbl">🚄 Eurostar — Book now at eurostar.com / ns-international.com</div>
+    <div class="cost-row urgent"><div><div class="cost-leg">Rotterdam → Antwerp <span class="bdg b-rec">Direct · Book now</span></div><div class="cost-sub">Jun 2 · Eurostar/ECD · ~45 min · from €15pp</div></div><div class="cost-price" data-pp="€15–29" data-both="€30–58">€30–58</div></div>
+    <div class="cost-row urgent"><div><div class="cost-leg">Brussels-Midi → Amsterdam <span class="bdg b-rec">Book now</span></div><div class="cost-sub">Jun 5 · Eurostar · ~1h 50m · from €29pp</div></div><div class="cost-price" data-pp="€29–53" data-both="€58–106">€58–106</div></div>
+
+    <div class="cost-section-lbl">🇧🇪 Belgium SNCB — Fixed price, no booking needed</div>
+    <div class="cost-row"><div><div class="cost-leg">Antwerp → Bruges</div><div class="cost-sub">Jun 3 · SNCB · ~1h 18m · Direct</div></div><div class="cost-price" data-pp="~€15" data-both="~€30">~€30</div></div>
+    <div class="cost-row"><div><div class="cost-leg">Bruges → Ghent</div><div class="cost-sub">Jun 4 · SNCB · ~30 min · Direct</div></div><div class="cost-price" data-pp="~€9" data-both="~€18">~€18</div></div>
+    <div class="cost-row"><div><div class="cost-leg">Ghent → Brussels-Midi</div><div class="cost-sub">Jun 5 · SNCB · ~30 min · Direct</div></div><div class="cost-price" data-pp="~€14" data-both="~€28">~€28</div></div>
+
+    <div class="cost-section-lbl">🚐 Moxy Hotel Shuttle</div>
+    <div class="cost-row"><div><div class="cost-leg">Schiphol ↔ Moxy (Jun 5 arrival + Jun 6 departure)</div><div class="cost-sub">€5 each way per person</div></div><div class="cost-price" data-pp="€10" data-both="~€20">~€20</div></div>
+
+    <div style="height:4px"></div>
+    <div class="total-box">
+      <div><div class="total-lbl" id="total-label">Estimated total — both of you</div><div class="total-sub">Standard class · advance booked where applicable · all 8 legs + shuttle</div></div>
+      <div class="total-amt" id="total-amt">€222–314</div>
+    </div>
+    <div class="warn" style="margin-top:10px"><strong>Best case ~€222 for both / ~€111 each</strong> — book the two Eurostar legs now at lowest fares. <strong>Worst case ~€314 / ~€157 each</strong> — leave it late and pay flex fares. Only the two Eurostar legs are price-sensitive to when you book.</div>
+  </div>
+
+  <!-- ═══════ BOOKINGS ═══════ -->
+  <div class="panel" id="panel-bookings">
+    <div class="section-heading">✈ Outbound & Return Flights</div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ WS2 · WestJet — Calgary → London Heathrow</div><div class="b-sub">May 20 · Departs 8:35 PM MST · Arrives London May 21 ~12:50 GMT · Boeing 787-9 · T4</div></div><div class="b-ref">WS2</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ London → Shannon, Ireland</div><div class="b-sub">May 21 · Booking ref: [BOOKING REF] · Then 8 days in Ireland (May 21–29)</div></div><div class="b-ref conf">[BOOKING REF]</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ FR3006 · Ryanair — Dublin → Amsterdam</div><div class="b-sub">May 29 · Dublin T1 10:40 AM → Schiphol 12:20 PM</div></div><div class="b-ref">FR3006</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ WS5101 — Amsterdam → Paris CDG</div><div class="b-sub">Jun 6 · Departs 09:35 AM · Arrives CDG ~10:55 AM · Be at Schiphol by 07:15 AM</div></div><div class="b-ref">WS5101</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ WS9 · WestJet — Paris CDG → Calgary YYC</div><div class="b-sub">Jun 6 · Departs ~14:00 CEST · Arrives Calgary ~15:10 MDT · Boeing 787-9</div></div><div class="b-ref">WS9</div></div>
+    <div class="section-heading">✅ Accommodation</div>
+    <div class="booking-row confirmed"><div><div class="b-name">🐷 Flying Pig Downtown Hostel</div><div class="b-sub">May 29–31 · 2 nights · Amsterdam</div></div><div class="b-ref conf">[BOOKING REF]</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">🐂 The Bulldog Hostel</div><div class="b-sub">May 31 · 1 night · Amsterdam · Both</div></div><div class="b-ref conf">[BOOKING REF]</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">🏨 Rotterdam Marriott Hotel</div><div class="b-sub">Jun 1 · 1 night · Both</div></div><div class="b-ref conf">[CONF NUMBER]</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">🏢 Premier Suites Antwerp</div><div class="b-sub">Jun 2 · 1 night · Both · Check-in from 3:00 PM</div></div><div class="b-ref conf">[BOOKING CODE]</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">🏰 Martin's Brugge</div><div class="b-sub">Jun 3 · 1 night · Both</div></div><div class="b-ref">Add ref</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">👑 B&amp;B Petit Prince</div><div class="b-sub">Jun 4 · 1 night · Ghent · Booked by Michel</div></div><div class="b-ref">—</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ Moxy Amsterdam Schiphol Airport</div><div class="b-sub">Jun 5 · 1 night</div></div><div class="b-ref conf">[BOOKING REF]</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ WS2 · WestJet — Calgary → London Heathrow</div><div class="b-sub">May 20 · Departs 8:35 PM MST · Arrives London May 21 ~12:50 GMT · Boeing 787-9</div></div><div class="b-ref">WS2</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ London → Shannon, Ireland</div><div class="b-sub">May 21 · Then 8 days in Ireland (May 21–29)</div></div><div class="b-ref conf">[BOOKING REF]</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ FR3006 · Ryanair — Dublin → Amsterdam</div><div class="b-sub">May 29 · Dublin 10:40 AM → Schiphol 12:20 PM</div></div><div class="b-ref">Check in online</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ WS5101 · WestJet — Amsterdam → Paris CDG</div><div class="b-sub">Jun 6 · Departs 09:35 AM · Arrives Paris ~10:55 AM · Codeshare</div></div><div class="b-ref">WS5101</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">✈ WS9 · WestJet — Paris CDG → Calgary (YYC)</div><div class="b-sub">Jun 6 · Departs ~14:00 CEST · Arrives Calgary ~15:10 MDT · Boeing 787-9</div></div><div class="b-ref">WS9</div></div>
+
+    <div class="section-heading">⚠️ Still to Book</div>
+    <div class="booking-row urgent"><div><div class="b-name">🚄 Rotterdam → Antwerp (Eurostar)</div><div class="b-sub">Jun 2 · ns-international.com or eurostar.com · From €15pp</div></div><div class="b-ref now">Book now</div></div>
+    <div class="booking-row urgent"><div><div class="b-name">🚄 Brussels-Midi → Amsterdam (Eurostar)</div><div class="b-sub">Jun 5 · eurostar.com · From €29pp</div></div><div class="b-ref now">Book now</div></div>
+
+    <div class="section-heading">⛳ Ireland Golf Schedule</div>
+    <div class="booking-row confirmed"><div><div class="b-name">⛳ Ballybunion Golf Club — Old Course</div><div class="b-sub">May 22 · Tee time: <strong>11:56 AM</strong> · Sandhill Rd, Ballybunion, Co. Kerry · +353 68 27146</div></div><div class="b-ref conf">Tee booked</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">⛳ Killarney Golf &amp; Fishing Club</div><div class="b-sub">May 23 · Lackabane, Mahony's Point, Co. Kerry · +353 64 663 1034</div></div><div class="b-ref conf">Tee booked</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">⛳ Waterville Golf Links</div><div class="b-sub">May 24 · Murreagh, Waterville, Co. Kerry · +353 66 947 4102</div></div><div class="b-ref conf">Tee booked</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">⛳ Tralee Golf Club</div><div class="b-sub">May 25 · Barrow, Co. Kerry · +353 66 713 6379</div></div><div class="b-ref conf">Tee booked</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">⛳ Old Head Golf Links</div><div class="b-sub">May 26 · Kinsale, Co. Cork · +353 21 477 8444</div></div><div class="b-ref conf">Tee booked</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">⛳ The Island Golf Club</div><div class="b-sub">May 28 · Corballis, Donabate, Co. Dublin · +353 1 843 6205</div></div><div class="b-ref conf">Tee booked</div></div>
+    <div class="section-heading">📌 Pre-book Attractions</div>
+    <div class="booking-row confirmed"><div><div class="b-name">🎟 Van Gogh Museum — BOOKED</div><div class="b-sub">May 31 · 15:45 · Museumplein 6, Amsterdam · Both of you</div></div><div class="b-ref conf">Confirmed</div></div>
+    <div class="booking-row confirmed"><div><div class="b-name">🎟 Anne Frank House — BOOKED</div><div class="b-sub">May 31 · 19:30 · Prinsengracht 263, Amsterdam · Both of you</div></div><div class="b-ref conf">Confirmed</div></div>
+    <div class="booking-row pending"><div><div class="b-name">Rijksmuseum</div><div class="b-sub">May 30 · rijksmuseum.nl</div></div><div class="b-ref now">Book ahead</div></div>
+    <div class="booking-row pending"><div><div class="b-name">Mauritshuis · The Hague</div><div class="b-sub">Jun 1 · mauritshuis.nl</div></div><div class="b-ref now">Book ahead</div></div>
+    <div class="booking-row pending"><div><div class="b-name">Ghent Altarpiece · St Bavo's Cathedral</div><div class="b-sub">Jun 4 · sintbaafskathedraal.be · Timed slot</div></div><div class="b-ref now">Book ahead</div></div>
+    <div class="booking-row pending"><div><div class="b-name">De Halve Maan Brewery · Bruges</div><div class="b-sub">Jun 3 · halvemaan.be · Summer fills up fast</div></div><div class="b-ref now">Book ahead</div></div>
+    <div class="booking-row pending"><div><div class="b-name">FR3006 Ryanair Online Check-in</div><div class="b-sub">Opens 60 days before May 29 (~March 30) · ryanair.com · Do before airport</div></div><div class="b-ref">Opens ~Mar 30</div></div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  EUROPE TRIP 2026 &nbsp;·&nbsp; MAY 29 – JUN 6 &nbsp;·&nbsp; IRELAND → NETHERLANDS → BELGIUM → PARIS
+</footer>
+
+<script>
+// Tab switching
+function showTab(id, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  el.classList.add('active');
+  // Reset filters when switching to itinerary
+  if (id === 'itin') applyFilters();
+}
+
+// Toggle day cards
+function toggleCard(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector('.chevron');
+  body.classList.toggle('open');
+  chevron.classList.toggle('open');
+}
+
+// Toggle train cards
+function toggleTrain(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector('.chevron');
+  body.classList.toggle('open');
+  chevron.classList.toggle('open');
+}
+
+// Filtering
+let activeCountry = 'all';
+let activeCity = null;
+
+function filterCards(btn, type) {
+  const filter = btn.dataset.filter;
+
+  if (type === 'country') {
+    activeCountry = filter;
+    activeCity = null;
+    // Reset city buttons
+    document.querySelectorAll('#city-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    // Update country buttons
+    document.querySelectorAll('#country-filters .filter-btn').forEach(b => {
+      b.classList.remove('active', 'nl-active', 'be-active');
+    });
+    if (filter === 'nl') btn.classList.add('nl-active');
+    else if (filter === 'be') btn.classList.add('be-active');
+    else if (filter === 'ie') btn.classList.add('ie-active');
+    else btn.classList.add('active');
+  } else {
+    activeCity = filter;
+    activeCountry = 'all';
+    // Reset country buttons
+    document.querySelectorAll('#country-filters .filter-btn').forEach(b => {
+      b.classList.remove('active', 'nl-active', 'be-active');
+    });
+    document.querySelector('#country-filters [data-filter="all"]').classList.add('active');
+    // Update city buttons
+    document.querySelectorAll('#city-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  applyFilters();
+}
+
+function applyFilters() {
+  const cards = document.querySelectorAll('.day-card');
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const cardCountry = card.dataset.country || '';
+    const cardCities = card.dataset.cities || '';
+    let show = false;
+
+    if (activeCity) {
+      show = cardCities.includes(activeCity);
+    } else if (activeCountry === 'all') {
+      show = true;
+    } else {
+      show = cardCountry.includes(activeCountry);
+    }
+
+    card.classList.toggle('hidden', !show);
+    if (show) visibleCount++;
+  });
+
+  const noResults = document.getElementById('no-results');
+  noResults.classList.toggle('visible', visibleCount === 0);
+}
+
+// Cost toggle
+function setCost(mode) {
+  document.querySelectorAll('.cost-price').forEach(el => {
+    el.textContent = mode === 'pp' ? el.dataset.pp : el.dataset.both;
+  });
+  document.getElementById('btn-both').classList.toggle('active', mode === 'both');
+  document.getElementById('btn-pp').classList.toggle('active', mode === 'pp');
+  document.getElementById('total-label').textContent = mode === 'pp' ? 'Estimated total — per person' : 'Estimated total — both of you';
+  document.getElementById('total-amt').textContent = mode === 'pp' ? '€111–157' : '€222–314';
+}
+</script>
+</body>
+</html>
